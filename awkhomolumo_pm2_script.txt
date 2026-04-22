@@ -1,0 +1,22 @@
+
+cd ratcliff-group-resources/workflows/TADF_HTVS/FF_geopt_xyz_files_Pm2
+
+# create CSV header
+echo "id,HOMO_eV,LUMO_eV" > pm2_homo_lumo.csv
+
+# extract values
+for f in Pm2_*_xtb.log; do
+  id=${f#Pm2_}
+  id=${id%_xtb.log}
+  awk -v id="$id" 'BEGIN{OFS=","}
+    /\(HOMO\)/{h_eV=$(NF-1)}
+    /\(LUMO\)/{l_eV=$(NF-1)}
+    END{
+      if(h_eV!="" && l_eV!=""){
+        print id,h_eV,l_eV
+      }
+    }' "$f" >> pm2_homo_lumo.csv
+done
+
+# quick preview
+head pm2_homo_lumo.csv
