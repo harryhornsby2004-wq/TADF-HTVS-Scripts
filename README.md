@@ -1,1 +1,1 @@
-# TADF-HTVS-Scripts
+# TADF-HTVS-Scripts note that inside the 2CzPN data analysis files. getting the files from pickles and the csv i created using the awk script are named DOBNA as I had incorrectly thought I was running calculations on DOBNA where by after all the calculations had finished and i reviewed i realised the molecule i had chosen was 2CzPN. a silly mistake but i didnt need to run all the calculations again and rename all the files so all the file names are dobna even though the molecule was 2CzPN
